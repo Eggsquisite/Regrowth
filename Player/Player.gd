@@ -10,6 +10,8 @@ signal animate
 var motion = Vector2.ZERO
 var inAir = false
 var isCrouching = false
+var inRange = false
+var isInteracting = false
 
 
 func _ready():
@@ -18,10 +20,12 @@ func _ready():
 
 func _physics_process(delta):
 	Apply_Gravity()
-	Jump()
 	Check_Grounded()
 	Collision()
-	Move()
+	Interact()
+	if not isInteracting:
+		Move()
+		Jump()
 	Animate()
 	move_and_slide(motion, UP)
 
@@ -80,6 +84,23 @@ func Move():
 
 
 func Animate():
-	emit_signal("animate", motion, isCrouching, is_on_floor())
+	emit_signal("animate", motion, isInteracting, is_on_floor())
+
+
+func Interact():
+	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
+		print("Interacting")
+		isInteracting = true
+	elif inRange and Input.is_action_just_pressed("interact") and isInteracting:
+		isInteracting = false
+		print("no")
+
+
+func InRange(value):
+	inRange = value
+
+
+
+
 
 

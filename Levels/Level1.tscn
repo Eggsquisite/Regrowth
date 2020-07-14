@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://Interactables/MushroomBig.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Interactables/Mound.tscn" type="PackedScene" id=4]
 
 [node name="Level1" type="Node2D"]
 
@@ -19,3 +20,8 @@ tile_data = PoolIntArray( 917534, -2147483647, 0, 917535, -2147483647, 65536, 91
 
 [node name="MushroomBig" parent="Mushroom" instance=ExtResource( 3 )]
 position = Vector2( 701.776, 521.607 )
+
+[node name="Mound" type="Node" parent="."]
+
+[node name="Mound" parent="Mound" instance=ExtResource( 4 )]
+position = Vector2( 650.377, 535.514 )
