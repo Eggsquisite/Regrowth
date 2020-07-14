@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 14.8647
-height = 41.7063
+height = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 481.723, 515.562 )
@@ -17,10 +17,10 @@ __meta__ = {
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
 animation = "idle"
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.49768, 10.909 )
+position = Vector2( 1.49768, 33.9263 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

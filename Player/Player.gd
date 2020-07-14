@@ -18,6 +18,7 @@ func _ready():
 func _physics_process(delta):
 	Apply_Gravity()
 	Jump()
+	Enable_Collision()
 	Move()
 	Animate()
 	move_and_slide(motion, UP)
@@ -36,8 +37,15 @@ func Apply_Gravity():
 func Jump():
 	if Input.is_action_just_pressed("jump") and isJumping == false:
 		isJumping = true
+		motion.y = 0
 		motion.y -= JUMP	# negative y values go up
+		$CollisionShape2D.disabled = true
 #		jump_sfx()
+
+
+func Enable_Collision():
+	if motion.y > 0:
+		$CollisionShape2D.disabled = false
 
 
 func Move():

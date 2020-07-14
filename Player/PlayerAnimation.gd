@@ -5,14 +5,14 @@ const TIMER = 0.25
 var inAir = false
 var walkReady = true
 
-func _on_Player_animate(motion, crouch, land):
+func _on_Player_animate(motion, crouch, is_on_floor):
 	if motion.y < 0:
 		play("jump")
 		walkReady = false
 		inAir = true
 	elif motion.y > 0 and inAir:
 		play("landing")
-	elif land and inAir:
+	elif is_on_floor and inAir:
 		play("land")
 		inAir = false
 		$Timer.start()

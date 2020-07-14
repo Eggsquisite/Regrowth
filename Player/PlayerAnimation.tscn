@@ -55,7 +55,7 @@ animations = [ {
 "frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "jump",
-"speed": 7.0
+"speed": 6.0
 } ]
 
 [node name="PlayerAnimation" type="AnimatedSprite"]
