@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom7.png" type="Texture" id=1]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom4.png" type="Texture" id=2]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom5.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom6.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom2.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom3.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom1.png" type="Texture" id=7]
+[ext_resource path="res://Interactables/Mushroom.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "boost",
+"speed": 15.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 15.5
+
+[sub_resource type="Animation" id=3]
+resource_name = "mushroom_boost"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "boost", "idle" ]
+}
+
+[node name="MushroomBig" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "boost"
+frame = 6
+playing = true
+script = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 6.25 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/mushroom_boost = SubResource( 3 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

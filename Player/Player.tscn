@@ -4,24 +4,22 @@
 [ext_resource path="res://GFX/Background/sky.png" type="Texture" id=18]
 [ext_resource path="res://Player/Player.gd" type="Script" id=20]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 14.8647
-height = 0.0
+height = 35.6347
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 481.723, 515.562 )
+position = Vector2( 480.532, 523.102 )
+collision_mask = 7
 script = ExtResource( 20 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
 animation = "idle"
-frame = 1
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.49768, 33.9263 )
-shape = SubResource( 2 )
+position = Vector2( 1.49768, 11.6539 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -29,6 +27,9 @@ zoom = Vector2( 0.75, 0.75 )
 limit_left = 0
 limit_top = 150
 limit_bottom = 600
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
 scroll_base_offset = Vector2( 0, 100 )

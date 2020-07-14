@@ -2,12 +2,13 @@ extends KinematicBody2D
 
 const UP = Vector2.UP
 const SPEED = 200
-const GRAVITY = 15
-const JUMP = 500
+const GRAVITY = 10
+const JUMP = 400
+const BOOST = 1.25
 
 signal animate
 var motion = Vector2.ZERO
-var isJumping = false
+var inAir = false
 var isCrouching = false
 
 
@@ -18,7 +19,8 @@ func _ready():
 func _physics_process(delta):
 	Apply_Gravity()
 	Jump()
-	Enable_Collision()
+	Check_Grounded()
+	Collision()
 	Move()
 	Animate()
 	move_and_slide(motion, UP)
@@ -27,7 +29,7 @@ func _physics_process(delta):
 func Apply_Gravity():
 	if is_on_floor() and motion.y > 0:
 		motion.y = 0
-		isJumping = false
+		inAir = false
 	elif is_on_ceiling():
 		motion.y = GRAVITY
 	else: 
@@ -35,15 +37,30 @@ func Apply_Gravity():
 
 
 func Jump():
-	if Input.is_action_just_pressed("jump") and isJumping == false:
-		isJumping = true
+	if Input.is_action_just_pressed("jump") and inAir == false:
+		inAir = true
 		motion.y = 0
 		motion.y -= JUMP	# negative y values go up
 		$CollisionShape2D.disabled = true
 #		jump_sfx()
 
 
-func Enable_Collision():
+func Check_Grounded():
+	if not is_on_floor():
+		yield(get_tree(), "idle_frame")
+		inAir = true
+	else:
+		inAir = false
+
+
+func Boost():
+	position.y -= 1
+	yield(get_tree(), "idle_frame") 
+	motion.y = 0
+	motion.y -= JUMP * BOOST
+
+
+func Collision():
 	if motion.y > 0:
 		$CollisionShape2D.disabled = false
 
@@ -64,4 +81,5 @@ func Move():
 
 func Animate():
 	emit_signal("animate", motion, isCrouching, is_on_floor())
+
 
