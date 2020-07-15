@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom1.png" type="Texture" id=1]
 [ext_resource path="res://GUI/PlantButton.gd" type="Script" id=2]
 [ext_resource path="res://GFX/GUI/Space_GUI-1.png.png" type="Texture" id=3]
 [ext_resource path="res://GUI/PlantList.gd" type="Script" id=4]
+[ext_resource path="res://GFX/Interactables/Pirahna/Idle/piranha-plant-1.png" type="Texture" id=5]
 
 [node name="PlantList" type="Control"]
 anchor_left = 0.0195313
@@ -35,9 +36,11 @@ texture = ExtResource( 3 )
 self_modulate = Color( 0.639216, 0.584314, 0.584314, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_right = 18.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 6.10224
+margin_top = 3.57381
+margin_right = 24.1022
+margin_bottom = 21.5738
+rect_scale = Vector2( 0.4, 0.4 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -55,10 +58,12 @@ texture = ExtResource( 3 )
 self_modulate = Color( 0.639216, 0.584314, 0.584314, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_right = 18.0
+margin_left = 0.78978
+margin_top = 1.68179
+margin_right = 29.7898
+margin_bottom = 14.6818
 rect_scale = Vector2( 0.5, 0.5 )
-texture_normal = ExtResource( 1 )
+texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {

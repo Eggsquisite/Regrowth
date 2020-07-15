@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/pixelmix.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom1.png" type="Texture" id=2]
 [ext_resource path="res://GFX/GUI/Space_GUI-1.png.png" type="Texture" id=4]
-[ext_resource path="res://GFX/Interactables/Mound/Plants-3.png.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -40,15 +38,12 @@ PopupMenu/styles/separator = null
 outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[node name="PlantPrompt" type="MenuButton"]
-margin_right = 12.0
-margin_bottom = 20.0
+[node name="PlantPrompt" type="TextureRect"]
+margin_right = 44.0
+margin_bottom = 38.0
 theme = SubResource( 3 )
-icon = ExtResource( 4 )
-items = [ "", ExtResource( 2 ), 0, false, false, 0, 0, null, "", false, "", ExtResource( 5 ), 0, false, false, 1, 0, null, "", false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 4 )
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 7.0

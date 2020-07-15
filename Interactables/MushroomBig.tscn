@@ -42,6 +42,7 @@ tracks/0/keys = {
 }
 
 [node name="MushroomBig" type="AnimatedSprite"]
+position = Vector2( 0.374573, 0 )
 frames = SubResource( 1 )
 animation = "boost"
 frame = 6

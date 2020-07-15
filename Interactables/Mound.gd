@@ -22,10 +22,12 @@ func _on_Area2D_body_exited(body):
 		$PlantPrompt.visible = false
 
 
-func SetVisibility(value):
-	$PlantPrompt.visible = value
-	$PlantList.visible = value
-	self.visible = value
+func DeletePlant(value):
+#	$PlantPrompt.visible = value
+#	$PlantList.visible = value
+#	self.visible = value
+#	$Area2D/CollisionShape2D.disabled = true
+	queue_free()
 
 
 func Interacting(value):
@@ -35,14 +37,13 @@ func Interacting(value):
 
 func Selected(value):
 	var temp
-	SetVisibility(false)
 	interactable = false
-	$Area2D/CollisionShape2D.disabled = true
 	if plants[value] != "":
 		temp = load(plants[value]).instance()
-		print(plants[value])
+		temp.initialize(global_position)
 	
-	add_child(temp)
+	get_tree().get_root().add_child(temp)
 	get_tree().call_group("Player", "InteractFinished")
+	DeletePlant(false)
 
 
