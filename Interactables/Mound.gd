@@ -1,10 +1,17 @@
 extends Sprite
 
 var interactable = true
+export (NodePath) var plant_0
+export (NodePath) var plant_1
+export (NodePath) var plant_2
+var plant_list = []
 
 func _ready():
 	add_to_group("interact")
 	connect("plantMenu", $PlantSelect, "_open_PlantMenu")
+	
+	for i in range(3):
+		add_child(plant_0)
 
 
 func _on_Area2D_body_entered(body):

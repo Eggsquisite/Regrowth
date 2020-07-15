@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GFX/Interactables/Mound/Plants-1.png.png" type="Texture" id=1]
 [ext_resource path="res://Interactables/Mound.gd" type="Script" id=2]
 [ext_resource path="res://GUI/PlantPrompt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/PlantList.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Interactables/MushroomBig.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.2947
@@ -12,6 +13,7 @@ radius = 15.2947
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+plant_0 = NodePath("MushroomBig")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -34,5 +36,9 @@ anchor_left = -1.88562
 anchor_top = -1.68983
 anchor_right = -1.74891
 anchor_bottom = -1.6365
+
+[node name="MushroomBig" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0.561234, -18.5206 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
