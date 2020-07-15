@@ -9,24 +9,28 @@ var crouched = false
 func _on_Player_animate(motion, interacting, is_on_floor):
 	if motion.y < 0:
 		play("jump")
-		walkReady = false
-		inAir = true
+		Walk(false)
+		InAir(true)
+		Crouching(false)
+		
 	elif motion.y > 0 and inAir:
 		play("landing")
+		
 	elif is_on_floor and inAir:
 		play("land")
-		inAir = false
-		$Timer.start()
+		InAir(false)
+		
 	elif motion.x != 0 and walkReady:
 		play("run")
+		Crouching(false)
+		
 	elif interacting and walkReady:
 		play("crouch")
-		crouched = true
+		Crouching(true)
+		
 	elif not interacting and crouched:
 		play("uncrouch")
-		crouched = false
-		# doesnt work, gets overwritten by idle
-	elif walkReady:
+	elif walkReady and not crouched:
 		play("idle")
 	
 	if motion.x > 0:
@@ -35,7 +39,18 @@ func _on_Player_animate(motion, interacting, is_on_floor):
 		flip_h = true
 
 
-func _on_Timer_timeout():
-	walkReady = true
-	$Timer.stop()
+func _on_PlayerAnimation_animation_finished():
+	if animation == "land":
+		Walk(true)
+	elif animation == "uncrouch":
+		Crouching(false)
+
+
+func Crouching(value):
+	crouched = value
+func InAir(value):
+	inAir = value
+func Walk(value):
+	walkReady = value
+
 

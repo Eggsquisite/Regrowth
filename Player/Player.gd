@@ -14,10 +14,6 @@ var inRange = false
 var isInteracting = false
 
 
-func _ready():
-	pass # Replace with function body.
-
-
 func _physics_process(delta):
 	Apply_Gravity()
 	Check_Grounded()
@@ -89,11 +85,9 @@ func Animate():
 
 func Interact():
 	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
-		print("Interacting")
 		isInteracting = true
 	elif inRange and Input.is_action_just_pressed("interact") and isInteracting:
 		isInteracting = false
-		print("no")
 
 
 func InRange(value):

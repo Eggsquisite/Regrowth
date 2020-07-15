@@ -42,6 +42,11 @@ animations = [ {
 "name": "landing",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "uncrouch",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 22 ) ],
 "loop": false,
 "name": "land",
@@ -51,11 +56,6 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 7.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "uncrouch",
-"speed": 8.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 6 ), ExtResource( 2 ) ],
 "loop": false,
@@ -71,7 +71,4 @@ animation = "land"
 frame = 3
 playing = true
 script = ExtResource( 18 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="." to="." method="_on_PlayerAnimation_animation_finished"]
