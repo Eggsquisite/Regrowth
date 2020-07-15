@@ -72,8 +72,6 @@ func Move():
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		motion.x = SPEED
 		isCrouching = false
-	elif Input.is_action_pressed("down") and is_on_floor():
-		isCrouching = true
 	else:
 		motion.x = 0
 		isCrouching = false
