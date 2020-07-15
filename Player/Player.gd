@@ -12,6 +12,7 @@ var inAir = false
 var isCrouching = false
 var inRange = false
 var isInteracting = false
+var interactFlag = false
 
 
 func _physics_process(delta):
@@ -84,8 +85,10 @@ func Animate():
 func Interact():
 	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
 		isInteracting = true
+		get_tree().call_group("interact", "Interacting")
 	elif inRange and Input.is_action_just_pressed("interact") and isInteracting:
 		isInteracting = false
+	
 
 
 func InRange(value):
