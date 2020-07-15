@@ -15,6 +15,10 @@ var isInteracting = false
 var interactFlag = false
 
 
+func _ready():
+	add_to_group("Player")
+
+
 func _physics_process(delta):
 	Apply_Gravity()
 	Check_Grounded()
@@ -86,9 +90,13 @@ func Interact():
 	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
 		isInteracting = true
 		get_tree().call_group("interact", "Interacting", true)
-	elif Input.is_action_just_pressed("interact") and isInteracting:
+	elif Input.is_action_just_pressed("back") and isInteracting:
 		isInteracting = false
 		get_tree().call_group("interact", "Interacting", false)
+
+
+func InteractFinished():
+	isInteracting = false
 
 
 func InRange(value):

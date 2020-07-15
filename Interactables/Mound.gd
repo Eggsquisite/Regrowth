@@ -1,6 +1,6 @@
 extends Sprite
 
-#signal plantMenu
+var interactable = true
 
 func _ready():
 	add_to_group("interact")
@@ -8,16 +8,14 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	if body.has_method("InRange"):
+	if body.has_method("InRange") and interactable:
 		body.InRange(true)
-#		SetVisibility(true)
 		$PlantPrompt.visible = true
 
 
 func _on_Area2D_body_exited(body):
 	if body.has_method("InRange"):
 		body.InRange(false)
-#		SetVisibility(false)
 		$PlantPrompt.visible = false
 
 
@@ -27,11 +25,12 @@ func SetVisibility(value):
 
 
 func Interacting(value):
-#	emit_signal("plantMenu")
 	$PlantPrompt.visible = !value
 	$PlantList.visible = value
 
 
 func Selected(value):
+#	interactable = false
 	SetVisibility(false)
-	print("done")
+	get_tree().call_group("Player", "InteractFinished")
+
