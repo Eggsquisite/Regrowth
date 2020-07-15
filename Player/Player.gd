@@ -85,9 +85,10 @@ func Animate():
 func Interact():
 	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
 		isInteracting = true
-		get_tree().call_group("interact", "Interacting")
+		get_tree().call_group("interact", "Interacting", true)
 	elif Input.is_action_just_pressed("interact") and isInteracting:
 		isInteracting = false
+		get_tree().call_group("interact", "Interacting", false)
 
 
 func InRange(value):
