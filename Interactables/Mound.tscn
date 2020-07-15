@@ -13,10 +13,10 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2147483650
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource( 1 )
 
 [node name="PlantSelect" parent="." instance=ExtResource( 3 )]

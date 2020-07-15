@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/pixelmix.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GFX/Interactables/Mushrooms/Big/mushroom1.png" type="Texture" id=2]
+[ext_resource path="res://GUI/PlantSelect.gd" type="Script" id=3]
 [ext_resource path="res://GFX/GUI/Space_GUI-1.png.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Interactables/Mound/Plants-3.png.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
@@ -44,7 +46,8 @@ margin_right = 12.0
 margin_bottom = 20.0
 theme = SubResource( 3 )
 icon = ExtResource( 4 )
-items = [ "", ExtResource( 2 ), 0, false, false, 0, 0, null, "", false ]
+items = [ "", ExtResource( 2 ), 0, false, false, 0, 0, null, "", false, "", ExtResource( 5 ), 0, false, false, 1, 0, null, "", false ]
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

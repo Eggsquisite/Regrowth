@@ -86,9 +86,8 @@ func Interact():
 	if inRange and Input.is_action_just_pressed("interact") and is_on_floor() and not isInteracting:
 		isInteracting = true
 		get_tree().call_group("interact", "Interacting")
-	elif inRange and Input.is_action_just_pressed("interact") and isInteracting:
+	elif Input.is_action_just_pressed("interact") and isInteracting:
 		isInteracting = false
-	
 
 
 func InRange(value):

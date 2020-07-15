@@ -23,9 +23,9 @@ tile_data = PoolIntArray( 917534, -2147483647, 0, 917535, -2147483647, 65536, 91
 [node name="MushroomBig" parent="Mushroom" instance=ExtResource( 3 )]
 position = Vector2( 701.776, 521.607 )
 
-[node name="Mound" type="Node" parent="."]
+[node name="Mounds" type="Node" parent="."]
 
-[node name="Mound" parent="Mound" instance=ExtResource( 4 )]
+[node name="Mound" parent="Mounds" instance=ExtResource( 4 )]
 position = Vector2( 650.377, 535.514 )
 
 [node name="PlantSelect" parent="." instance=ExtResource( 5 )]

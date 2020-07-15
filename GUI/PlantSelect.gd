@@ -3,9 +3,9 @@ extends MenuButton
 signal grow
 
 func _ready():
-	add_to_group("PlantSelect")
+	get_popup().connect("id_pressed", self, "_open_PlantMenu")
 
 
-func _on_PlantSelect_pressed():
+func _open_PlantMenu():
 	print("hi")
 
