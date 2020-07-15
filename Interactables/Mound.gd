@@ -1,17 +1,13 @@
 extends Sprite
 
 var interactable = true
-export (NodePath) var plant_0
-export (NodePath) var plant_1
-export (NodePath) var plant_2
-var plant_list = []
+export var plants : PoolStringArray
+
+onready var mushroom = preload("res://Interactables/MushroomBig.tscn").instance()
+onready var plant_list = [mushroom]
 
 func _ready():
 	add_to_group("interact")
-	connect("plantMenu", $PlantSelect, "_open_PlantMenu")
-	
-	for i in range(3):
-		add_child(plant_0)
 
 
 func _on_Area2D_body_entered(body):
@@ -29,6 +25,7 @@ func _on_Area2D_body_exited(body):
 func SetVisibility(value):
 	$PlantPrompt.visible = value
 	$PlantList.visible = value
+	self.visible = value
 
 
 func Interacting(value):
@@ -37,7 +34,15 @@ func Interacting(value):
 
 
 func Selected(value):
-#	interactable = false
+	var temp
 	SetVisibility(false)
+	interactable = false
+	$Area2D/CollisionShape2D.disabled = true
+	if plants[value] != "":
+		temp = load(plants[value]).instance()
+		print(plants[value])
+	
+	add_child(temp)
 	get_tree().call_group("Player", "InteractFinished")
+
 

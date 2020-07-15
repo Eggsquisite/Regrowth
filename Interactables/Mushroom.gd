@@ -3,6 +3,7 @@ extends AnimatedSprite
 
 func _ready():
 	$AnimationPlayer.play("mushroom_boost")
+#	$Area2D/CollisionShape2D.disabled = true
 
 
 func _on_Area2D_body_entered(body):
