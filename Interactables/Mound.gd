@@ -22,14 +22,6 @@ func _on_Area2D_body_exited(body):
 		$PlantPrompt.visible = false
 
 
-func DeletePlant(value):
-#	$PlantPrompt.visible = value
-#	$PlantList.visible = value
-#	self.visible = value
-#	$Area2D/CollisionShape2D.disabled = true
-	queue_free()
-
-
 func Interacting(value):
 	$PlantPrompt.visible = !value
 	$PlantList.visible = value
@@ -44,6 +36,6 @@ func Selected(value):
 	
 	get_tree().get_root().add_child(temp)
 	get_tree().call_group("Player", "InteractFinished")
-	DeletePlant(false)
+	queue_free()
 
 

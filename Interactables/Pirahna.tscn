@@ -25,10 +25,10 @@ animations = [ {
 } ]
 
 [node name="Pirahna" type="AnimatedSprite"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 4
 playing = true
 flip_h = true
 script = ExtResource( 10 )

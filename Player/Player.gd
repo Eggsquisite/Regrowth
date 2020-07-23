@@ -20,7 +20,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	Apply_Gravity()
+#	Apply_Gravity()
 	Check_Grounded()
 	Collision()
 	Interact()

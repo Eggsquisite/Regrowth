@@ -44,6 +44,9 @@ margin_bottom = 38.0
 theme = SubResource( 3 )
 texture = ExtResource( 4 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 7.0
